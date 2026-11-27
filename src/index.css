@@ -1,111 +1,138 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* ==========================================================
+   Trishey Global: global styles
+   Import order in main.tsx: bootstrap.min.css FIRST, then this file.
+   Theme is chosen by the data-bs-theme attribute on <html>:
+   light (default) or dark. Bootstrap 5.3 reads the same attribute.
+   ========================================================== */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* ---------- LIGHT THEME (default) ---------- */
+:root,
+[data-bs-theme="light"] {
+  /* brand palette */
+  --text: #08161c;
+  --muted: #4a5f66;
+  --bg: #f2f9f9;
+  --surface: #ffffff;
+  --border: #d3e3e5;
+  --primary: #0f6f74;
+  --primary-hover: #0d5a5e;
+  --on-primary: #ffffff;
+  --secondary: #0f2d59;
+  --accent: #f28c38;
+  --accent-hover: #e07a27;
+  --on-accent: #08161c;
+  --footer-bg: #0d5a5e;
+  --footer-text: #e8f2f3;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* same colours as r,g,b numbers, because Bootstrap needs them */
+  --bs-primary-rgb: 15, 111, 116;
+  --bs-body-color-rgb: 8, 22, 28;
+  --bs-body-bg-rgb: 242, 249, 249;
+  --bs-tertiary-bg-rgb: 255, 255, 255;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ---------- DARK THEME ---------- */
+[data-bs-theme="dark"] {
+  --text: #e8f2f3;
+  --muted: #9db3ba;
+  --bg: #0a171d;
+  --surface: #12242c;
+  --border: #25404a;
+  --primary: #3db7bd;
+  --primary-hover: #5cc8cd;
+  --on-primary: #08161c; /* dark text on the light teal, white fails contrast */
+  --secondary: #7fa6dc;
+  --accent: #f28c38;
+  --accent-hover: #f6a05a;
+  --on-accent: #08161c;
+  --footer-bg: #0d1f29;
+  --footer-text: #e8f2f3;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --bs-primary-rgb: 61, 183, 189;
+  --bs-body-color-rgb: 232, 242, 243;
+  --bs-body-bg-rgb: 10, 23, 29;
+  --bs-tertiary-bg-rgb: 18, 36, 44;
+
+  color-scheme: dark;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* ---------- Map our palette onto Bootstrap's variables ---------- */
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text);
+  --bs-tertiary-bg: var(--surface);
+  --bs-border-color: var(--border);
+  --bs-primary: var(--primary);
+  --bs-link-color-rgb: var(--bs-primary-rgb);
+  --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+  --bs-body-font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  display: block;
+}
+
 body {
-  margin: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* ---------- Buttons: Bootstrap buttons use their own variables ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--primary);
+  --bs-btn-border-color: var(--primary);
+  --bs-btn-color: var(--on-primary);
+  --bs-btn-hover-bg: var(--primary-hover);
+  --bs-btn-hover-border-color: var(--primary-hover);
+  --bs-btn-hover-color: var(--on-primary);
+  --bs-btn-active-bg: var(--primary-hover);
+  --bs-btn-active-border-color: var(--primary-hover);
+  --bs-btn-active-color: var(--on-primary);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+/* call-to-action button: use class="btn btn-accent" */
+.btn-accent {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-color: var(--on-accent);
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-hover);
+  --bs-btn-hover-color: var(--on-accent);
+  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-border-color: var(--accent-hover);
+  --bs-btn-active-color: var(--on-accent);
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* ---------- Navbar: highlight the active page ---------- */
+.navbar .nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* ---------- Footer: use class="site-footer" on the footer element ---------- */
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+.site-footer a {
+  color: var(--footer-text);
 }

@@ -1,12 +1,12 @@
-import React from 'react';
+
 import { Header } from './components/layouts/Header';
-import { Navbar } from './components/layouts/Navbar';
+import { MyBody } from './components/layouts/MyBody';
 import { Footer } from './components/layouts/Footer';
 function App() {
   return (
     <>
     <Header/>
-    <Navbar/>
+    <MyBody/>
     <Footer/>
     </>
   );

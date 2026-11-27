@@ -1,10 +1,9 @@
 import React from 'react'
-import { Navbar } from './Navbar'
+import { MyNavbar } from './MyNavbar'
 
 const headerCss: React.CSSProperties = {
-  backgroundColor: '#f0f0f0',
-  padding: '1rem',
-  display: 'flex',
+  
+  padding: '0rem',
   alignItems: 'center',
   justifyContent: 'flex-start',
   gap: '1rem',
@@ -13,8 +12,8 @@ const headerCss: React.CSSProperties = {
 export const Header = () => {
   return (
     <div style={headerCss}>
-      <img src="/tg-icon-name.svg" alt="Logo" style={{ width: '250px', height: '250px' }} />
-      <Navbar />
+      <MyNavbar />
+      
     </div>
   )
 }
