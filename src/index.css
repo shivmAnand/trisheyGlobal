@@ -1,5 +1,5 @@
 /* ==========================================================
-   Trishey Global: global styles
+   Trishrey Global: global styles
    Import order in main.tsx: bootstrap.min.css FIRST, then this file.
    Theme is chosen by the data-bs-theme attribute on <html>:
    light (default) or dark. Bootstrap 5.3 reads the same attribute.
@@ -21,7 +21,7 @@
   --accent: #f28c38;
   --accent-hover: #e07a27;
   --on-accent: #08161c;
-  --footer-bg: #0d5a5e;
+  --footer-bg: #0D2447;
   --footer-text: #e8f2f3;
 
   /* same colours as r,g,b numbers, because Bootstrap needs them */

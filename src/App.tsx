@@ -1,15 +1,23 @@
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Services } from './pages/Services';
+import { ContactUs } from './pages/ContactUs';
+import { AboutUs } from './pages/AboutUs';
+import { MyLayout } from './components/layouts/MyLayout';
 
-import { Header } from './components/layouts/Header';
-import { MyBody } from './components/layouts/MyBody';
-import { Footer } from './components/layouts/Footer';
 function App() {
   return (
-    <>
-    <Header/>
-    <MyBody/>
-    <Footer/>
-    </>
+    <Routes>
+      <Route element={<MyLayout />} >
+        <Route index element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+

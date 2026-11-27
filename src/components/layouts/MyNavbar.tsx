@@ -16,7 +16,7 @@ export const MyNavbar = () => {
     <>
       <BsNavbar expand="md" className="pt-0 mt-0 mx-0 px-2 px-md-4 shadow-sm w-100">
         <Container fluid className="px-0">
-          <BsNavbar.Brand as={NavLink} to="/" className="py-1 m-0 d-flex align-items-center">
+          <BsNavbar.Brand  className="py-1 m-0 d-flex align-items-center">
             <img
               src="/tg-icon.svg"
               alt="Logo"
